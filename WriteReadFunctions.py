@@ -1,5 +1,7 @@
+import datetime
 import sqlite3
 from MainClasses import *
+import os
 
 
 def check_password(username: str, password: str):
@@ -18,3 +20,10 @@ def check_password(username: str, password: str):
     raise MismatchPassword('Пароль не совпадает')
 
 
+def write_error(message: str):
+    if 'logs_error' not in os.listdir():
+        os.mkdir('logs_error')
+    now = datetime.datetime.now()
+    path = f"logs_error\\{now.strftime('%c').replace(':', '.').replace(' ', '_')}.txt"
+    with open(path, 'w', encoding='utf-8') as f:
+        f.write(message)
