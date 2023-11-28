@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Главная</title>
+</head>
+<body>
+  <header>
+    <div id="logo" onclick="slowScroll('#top')">
+      <span>BArbossik Posts</span>
+    </div>
+    <div id="about">
+      <a href="newPost">Новый Пост</a>
+      <a href="feedBack">Обратная связь</a>
+      <a href="exit", id="exit">Выход</a>
+      <a id="UserAccNameHead">Сергей</a>
+    </div>
+    
+  </header>
+
+  <div id="top">
+    <h1>Добро пожаловать</h1>
+      <h3 id="UserAccName">Сергей</h3>
+  </div>
+   
+  <div id="main">
+    
+  <div id="post-example", class="post">
+    <span class="name">Название</span> </br>
+    <div class="username">автор</div> </br>
+    <div class="content">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dolorum eaque possimus provident. Vel obcaecati ullam debitis vitae a iste, iusto assumenda quia ab nisi nihil, rem alias facilis eaque.</div>
+      </div>
+  </div>
+  
+  
+
+  <script src="js/main.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script>
+    function slowScroll(id) {
+      $('html, body').animate({
+        scrollTop: $(id).offset().top
+      }, 500);
+    }
+
+    $(document).on("scroll", function () {
+      if($(window).scrollTop() === 0)
+        $("header").removeClass("fixed");
+      else
+        $("header").attr("class", "fixed");
+    });
+  </script>
+</body>
+</html>
