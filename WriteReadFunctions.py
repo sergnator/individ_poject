@@ -18,4 +18,3 @@ def check_password(username: str, password: str):
     raise MismatchPassword('Пароль не совпадает')
 
 
-check_password(input(), input())
