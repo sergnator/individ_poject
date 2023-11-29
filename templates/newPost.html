@@ -1,0 +1,65 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Новый Пост</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
+</head>
+<script>
+    if(!document.cookie.includes("id=")){
+        document.location('login')
+    }
+    const postData = async (url = '', data) => {
+    // Формируем запрос
+    const response = await fetch(url, {
+      method: 'POST',
+     
+      headers: {
+        'Content-Type': 'text'
+      },
+      body: data
+    });
+    return response.text()
+}
+postData('username', document.cookie.split('=')[1]).then((data) => {
+    document.getElementById('name').textContent = data
+    document.getElementById('UserAccNameHead').textContent = data
+});
+
+    function send(){
+        json ={postname: document.getElementById('postname').value, content: document.getElementById('content').value, athour: document.getElementById('name').textContent}
+        postData('createPost', JSON.stringify(json))
+        document.location.href = 'main'
+    }
+</script>
+<body>
+    <header>
+        <div id="logo">
+            <span>BArbossik Posts</span>
+        </div>
+        <div id="about">
+            <a href="main">Главная</a>
+            <a href="feedBack">Обратная связь</a>
+            <a href="exit" , id="exit">Выход</a>
+            <a id="UserAccNameHead">Сергей</a>
+        </div>
+
+    </header>
+    <br>
+    <form class="form">
+        <br>
+      <input placeholder="Название" type="text" id="postname"> <br>
+      <label id="name">автор</label> <br>
+      <textarea placeholder="текст поста" id="content" cols="30" rows="10"></textarea>
+
+
+    </form>
+        <Button onclick="send()">отправить</Button>
+
+</body>
+</html>

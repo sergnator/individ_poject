@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <script>
+        const postData = async (url = '', data) => {
+            // Формируем запрос
+            const response = await fetch(url, {
+                method: 'POST',
+
+                headers: {
+                    'Content-Type': 'text'
+                },
+                body: data
+            });
+            return response.text()
+        }
+        postData('username', document.cookie.split('=')[1]).then((data) => {
+            document.getElementById('UserAccNameHead').textContent = data
+        });
+
+
+
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Обратная связь</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/create.css') }}">
+</head>
+
+<body>
+    <header>
+        <div id="logo">
+            <span>BArbossik Posts</span>
+        </div>
+        <div id="about">
+            <a href="newPost">Новый Пост</a>
+            <a href="main">Главная</a>
+            <a href="exit" , id="exit">Выход</a>
+            <a id="UserAccNameHead">Сергей</a>
+        </div>
+    </header>
+    <br>
+    <div id="main">
+        Если вы обнаружили баг, ошибку, уязвимость или у вас возникли сложности с сайтом прошу  <a href="https://discordapp.com/users/726140817386897488/">написать</a> мне если ссылка не работает - <a href="https://m.vk.com/ssulimov3">то сюда</a>
+
+    </div>
+</body>
+</html>
