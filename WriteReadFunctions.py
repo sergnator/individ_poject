@@ -27,3 +27,19 @@ def write_error(message: str):
     path = f"logs_error\\{now.strftime('%c').replace(':', '.').replace(' ', '_')}.txt"
     with open(path, 'w', encoding='utf-8') as f:
         f.write(message)
+
+
+def create_user(username: str, password: str):
+    date = datetime.date.today()
+    con = sqlite3.connect('users.sqlite')
+    cur = con.cursor()
+    req = f'insert into users(username, password, date) values({username}, {password}, {date})'
+    try:
+        cur.execute(req)
+    except sqlite3.IntegrityError:
+        raise NicknameIsBusy('Такое имя пользователя уже используется')
+    con.commit()
+    con.close()
+
+
+create_user(input(), input())

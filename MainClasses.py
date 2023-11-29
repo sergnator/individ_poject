@@ -14,3 +14,7 @@ class MismatchPassword(BasePostsException):
 
 class NotFoundUsername(BasePostsException):
     pass
+
+
+class NicknameIsBusy(BasePostsException):
+    pass
