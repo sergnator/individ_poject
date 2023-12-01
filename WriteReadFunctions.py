@@ -9,13 +9,13 @@ def check_password(username: str, password: str):
     cur = con.cursor()
     req = f'select * from users where username = "{username}"'
     response = cur.execute(req).fetchall()
+    response = response[0]
     response = list(map(str, response))
     if len(response) == 0:
         raise NotFoundUsername('Такого пользователя нет')
 
-    if response[0][2] == password:
-        print(1)
-        data = {'username': username, 'password': response[0][2], 'date': response[0][3]}
+    if response[2] == password:
+        data = {'id': response[0],'username': username, 'password': response[2], 'date': response[3]}
         return data
     raise MismatchPassword('Пароль не совпадает')
 
@@ -33,13 +33,11 @@ def create_user(username: str, password: str):
     date = datetime.date.today()
     con = sqlite3.connect('users.sqlite')
     cur = con.cursor()
-    req = f'insert into users(username, password, date) values({username}, {password}, {date})'
+    req = f'insert into users(username, password, date) values("{username}", "{password}", "{date}")'
     try:
         cur.execute(req)
     except sqlite3.IntegrityError:
         raise NicknameIsBusy('Такое имя пользователя уже используется')
     con.commit()
     con.close()
-
-
-create_user(input(), input())
+    return check_password(username, password)
