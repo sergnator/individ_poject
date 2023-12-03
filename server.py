@@ -31,6 +31,7 @@ def registration():
     try:
         data_of_user = create_user(data['username'], data['passwrod'])
     except BasePostsException:
+
         return '-1'
 
     return data_of_user['id']
