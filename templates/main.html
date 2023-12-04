@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/main2.css') }}">
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
     <title>Document</title>
 </head>
 <div class="header">
@@ -16,19 +17,18 @@
             <h1 id="username">Сергей</h1>
             
             <div class="hrefs">
-                <a href="/view/Groups">Сообщества</a>
                 <a class="newPost" href="/view/newPost">Новый пост</a> <br>
                 <a class="exit" href="/view/exit">Выход</a>
             </div>
         </div>
         
-        <div class="main">
+        <div class="main" id="main">
             
             <div class="box-content" id="1">
                     <div class="head-of-post">
                         <div class="username-of-post" id="1">Пример<label class="date">. 30.11.2023</labels></div>
                     </div>
-                <div class="content" id="1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias similique enim, voluptatum nemo libero ratione. Voluptates itaque quo commodi repellat at provident, deserunt quam suscipit est voluptas quasi molestias adipisci? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, doloribus voluptatibus! Error debitis quae perferendis autem porro ullam doloremque! Ducimus inventore placeat, nostrum deleniti numquam perspiciatis fugit possimus eligendi dolorem!</div>
+                <p class="content" id="1">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Alias similique enim, voluptatum nemo libero ratione. Voluptates itaque quo commodi repellat at provident, deserunt quam suscipit est voluptas quasi molestias adipisci? Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur, doloribus voluptatibus! Error debitis quae perferendis autem porro ullam doloremque! Ducimus inventore placeat, nostrum deleniti numquam perspiciatis fugit possimus eligendi dolorem!</p>
             </div>
             <div class="box-content" id="1">
                 <div class="head-of-post">
